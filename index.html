@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Poonam ❤️ Valentine</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    h1 {
+      color: #ff3366;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    #yes {
+      background-color: #ff3366;
+      color: white;
+    }
+
+    #no {
+      background-color: #cccccc;
+      position: absolute;
+    }
+
+    .gift-btn {
+      background-color: #ff7eb3;
+      color: white;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .emoji {
+      position: fixed;
+      font-size: 30px;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-600px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎶 Romantic Instrumental Music -->
+  <audio id="romanticSong" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/26/audio_0b1b8d0b6a.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <h1>Poonam 💖</h1>
+    <p>Will you be my Valentine? 😍</p>
+    <button id="yes" onclick="yesClicked()">Yes 😍</button>
+    <button id="no">No 🙈</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const song = document.getElementById("romanticSong");
+
+    noBtn.addEventListener("mouseover", () => {
+      noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+      noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    });
+
+    function yesClicked() {
+      song.volume = 0.25;
+      song.play();
+
+      document.body.innerHTML = `
+        <div class="card">
+          <h1>Yayyy Poonam! 💕</h1>
+          <p>You just made my Valentine’s Day ❤️</p>
+
+          <button class="gift-btn" onclick="openChocolate()">
+            🍫 Chocolate for Poonam
+          </button>
+
+          <button class="gift-btn" onclick="openTeddy()">
+            🧸 Teddy for Poonam
+          </button>
+        </div>
+      `;
+
+      setInterval(createEmoji, 150);
+    }
+
+    function openChocolate() {
+      window.open("https://blinkit.com/prn/amul-dark-chocolate-bar/prid/381902", "_blank");
+    }
+
+    function openTeddy() {
+      alert("🧸 Big hug for you, Poonam 🤗❤️");
+    }
+
+    function createEmoji() {
+      const emojis = ["❤️","💖","💕","😍","💘"];
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * window.innerWidth + "px";
+      emoji.style.bottom = "-30px";
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 4000);
+    }
+  </script>
+
+</body>
+</html>
